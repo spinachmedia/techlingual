@@ -1,4 +1,10 @@
 class CrawlWord
+    
+    # 検索数を保持
+    @@count = 0
+
+    # 1サイトごとに、以下の件数までしかカウントしない
+    @@maxCount = 20;
 
     #一度クロールしたURLを格納
     @@croled_url = []
@@ -12,6 +18,11 @@ class CrawlWord
         #各サイトで再帰的にクロール
         urls.each do |url|
             
+            #検索数をリセット
+            @@count = 0
+            
+            #データの削除
+            
             targetUrl = url.url
             countWordWithUrl(url,targetUrl)
             
@@ -21,6 +32,8 @@ class CrawlWord
     
     # URLから英単語をクロールする
     def self.countWordWithUrl (siteData,targetUrl)
+        
+        
         
         crawl_url = targetUrl
         
@@ -32,6 +45,15 @@ class CrawlWord
             puts "クロール済みURLであるためスキップ :" + crawl_url
            return 
         end
+        
+        # 自分自身の配下のURL以外はスキップ
+        if crawl_url.include?(siteData.url)
+        else
+            puts crawl_url
+            puts "配下のURLではないためスキップ :" + crawl_url
+           return 
+        end
+        
         
         # 配列に格納し、クロール済みにカウント
         @@croled_url.push(crawl_url)
@@ -57,8 +79,16 @@ class CrawlWord
         
         #リンクを再帰的に処理
         links.each do |link|
+            
+            # 最大検索数を越えたら戻ってくる
+            if @@count > @@maxCount 
+                return
+            end
+            
             next_url = siteData.domain + link
             countWordWithUrl(siteData,next_url)
+            
+            @@count = @@count + 1
         end
         
     end
@@ -75,7 +105,7 @@ class CrawlWord
         urls.flatten!
         result = []
         urls.each do |data|
-            if data.match(/(ico|jpeg|jpg|png|gif)$/i)
+            if data.match(/(ico|jpeg|jpg|png|gif|css|js|svg|pdf|zip|tar|gz|7z)$/i)
                 next   
             end
             if data.match(/^http/i)
@@ -90,9 +120,6 @@ class CrawlWord
             if data.match(/^java/i)
                 next   
             end
-            if data.match(/(css|js|svg)$/i)
-                next   
-            end
             result.push data
         end
         #配列を返す
@@ -105,6 +132,15 @@ class CrawlWord
     def self.crawlUrl(url) 
         puts "これからクロールする: " + url.to_s
         uri = URI.parse(url)
+        
+        # req = Net::HTTP::Get.new uri
+        code = Net::HTTP.get_response(uri).code
+
+        if code == "200" then
+        else
+            return []
+        end
+          
         string = Net::HTTP.get(uri)
         #bodyの中身だけを抽出
         string.gsub!(/^.*<body.*?>(.+)<\/body>.*/ ,'\1')
@@ -144,18 +180,23 @@ class CrawlWord
     end
     
     def self.insertHash (hash,url,id)
+        puts hash.count
         puts "クロール完了。インサートするデータ：" + hash.count.to_s
-        # 全部DBに突っ込む
-        hash.each do |key,val|
-           
-            wordInfo = WordInfo.new
-            wordInfo.word = key
-            wordInfo.count = val
-            wordInfo.url_mst_id = id
-            #wordInfo.url = url
-            wordInfo.save
+        
+        WordInfo.transaction do
+            # 全部DBに突っ込む
+            hash.each do |key,val|
+                   
+                wordInfo = WordInfo.new
+                wordInfo.word = key
+                wordInfo.count = val
+                wordInfo.url_mst_id = id
+                #wordInfo.url = url
+                wordInfo.save
             
-        end #each
+            end #each
+        end
+        
         puts "レコード合計: " + WordInfo.count.to_s
     end
     

@@ -1,3 +1,33 @@
 // Place all the styles related to the contents_detail controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#infoPanel {
+  margin-left: 40px;
+  max-width: 1000px;
+}
+.leftSide {
+  overflow: hidden;
+  position: relative;
+  img {
+    border: solid 1px #EEE;
+  }
+}
+.rightSide {
+  padding: 20px;
+}
+.siteTable {
+  // position: absolute;
+  // z-index: 1000;
+  // width: 100%;
+  // left: 0px;
+  // bottom: 0px;
+  // background-color: rgba(0,0,0,0.5);
+  // padding: 30px 20px;
+}
+.startStudyButtonArea {
+  padding: 8px 16px;
+}
+#startStudyButton {
+  padding: 15px 8px;
+}

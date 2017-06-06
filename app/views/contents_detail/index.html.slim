@@ -1,2 +1,74 @@
-<h1>ContentsDetail#index</h1>
-<p>Find me in app/views/contents_detail/index.html.erb</p>
+link rel="stylesheet" media="all" href="/assets/contents_detail.css"
+
+.topic
+  .containter
+      #infoPanel.panel.panel-success
+        .panel-heading
+          h3.panel-title 
+            = @site.name
+        .panel-body
+          .row
+            .col-md-6.leftSide
+              .bg
+                img src="https://s.wordpress.com/mshots/v1/#{URI.encode(@site[:url])}?w=400" /
+            .col-md-6.rightSide
+              .siteTable
+                table.table
+                  tbody
+                    tr
+                      th URL
+                      td 
+                        = @site[:url]
+                    tr
+                      th 登録単語数
+                      td
+                        = "#{500}件"
+                    tr
+                      th 学習した人数
+                      td 
+                        = "#{500}人"
+                    tr
+                      th 学習した人数
+                      td 
+                        = "#{500}人"
+                    tr
+                      td.startStudyButtonArea colspan="2"
+                        button.btn.btn-primary.btn-block#startStudyButton type="button"  学習を開始する
+              
+.mainContents#cardList.container
+  .row
+    .col-md-12
+      .panel
+        ul#myTab1.nav.nav-tabs.nav-justified
+          li.active
+            a data-toggle="tab" href="#home1"  単語一覧
+          li
+            a data-toggle="tab" href="#profile1"  Profile
+          li.dropdown
+            a data-toggle="tab" href="#profile1"  Profile
+        #myTabContent.tab-content
+          #home1.tab-pane.fade.active.in
+            table.table
+              thead
+                tr
+                  th 単語
+                  th 出現回数
+                  th 意味
+              tbody
+                - @words.each do |word|
+                  tr
+                    td
+                      = word.word
+                    td
+                      = word.count
+                    td
+                      | mean
+                    
+              
+            
+          #profile1.tab-pane.fade
+            p Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+          #dropdown1-1.tab-pane.fade
+            p Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone...
+          #dropdown1-2.tab-pane.fade
+            p Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche ...

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
-  get 'contents_detail/index'
+  get 'contents_detail/:id' ,to: 'contents_detail#index'
 
   get 'contents_list/index'
 

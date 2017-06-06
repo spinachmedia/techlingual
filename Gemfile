@@ -6,7 +6,8 @@ gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+# gem 'sass-rails', '~> 5.0'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -43,18 +44,28 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  
+  # エラー画面をわかりやすく整形してくれる
+  gem 'better_errors'
+  # better_errorsの画面上にirb/pry(PERL)を表示する
+  gem 'binding_of_caller'
 end
 
 gem 'devise'
 gem 'rails_admin'
 gem 'slim'
 gem 'bootstrap-sass'
-gem 'sass-rails','~> 5.0'
+#gem 'sass-rails','~> 5.0'
+#gem 'sass-rails', :git => 'https://github.com/zakelfassi/sass-rails'
+gem 'sass-rails'#, :git => 'https://github.com/zakelfassi/sass-rails'
 
 gem 'twitter-bootswatch-rails'
 gem 'twitter-bootswatch-rails-helpers'
 gem 'execjs'
 gem 'less-rails'
+
+gem 'bootflat-rails'
+
 
 # rails g bootswatch:install lumen
 # rails g bootswatch:import lumen

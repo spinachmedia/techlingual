@@ -1,0 +1,53 @@
+doctype html
+html
+  head
+    title Techlingual
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+    = csrf_meta_tags 
+  body
+    nav.navbar.navbar-default role="navigation" 
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle data-target="#bs-example-navbar-collapse-3" data-toggle="collapse" type="button" 
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href="/"  Techlingual
+        #bs-example-navbar-collapse-3.collapse.navbar-collapse
+          p.navbar-text.navbar-right
+            a.navbar-link href=""  Signed in as Mark Otto
+    = yield 
+    .site-footer
+      .container
+        .download
+          span.download__infos
+
+        hr.dashed/
+        .row
+          .col-md-4
+            h3 Get involved
+            p
+              | Bootflat is hosted on
+              a href="https://github.com/bootflat/bootflat.github.io" rel=("external nofollow") target="_blank"  GitHub
+              | and open for everyone to contribute. Please give us some feedback and join the development!
+          .col-md-4
+            h3 Contribute
+            p
+              | You want to help us and participate in the development or the documentation? Just fork Bootflat on
+              a href="https://github.com/Bootflat/bootflat.github.io" rel=("external nofollow") target="_blank"  GitHub
+              | and send us a pull request.
+          .col-md-4
+            h3 Found a bug?
+            p
+              | Open a
+              a href="https://github.com/bootflat/bootflat.github.io/issues" rel=("external nofollow") target="_blank"  new issue
+              | on GitHub. Please search for existing issues first and make sure to include all relevant information.
+        hr.dashed
+          a href="https://glodia.jp"
+            | glodia 
+        hr.dashed
+        .copyright.clearfix
+          p
+            | © 2017 Glodia Inc. All rights reserved.

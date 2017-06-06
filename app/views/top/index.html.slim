@@ -1,0 +1,40 @@
+.topic
+  .container
+    .col-md-12
+      h3 技術系の英語学習を支援する
+  .topic__infos
+    .container
+      | Techlingualは、技術系のWEBページの頻出単語を解析し、<br>
+      | 技術書を読む上で必要な単語、イディオムを整理、<br>
+      | 効率的にグローバルなエンジニアを育成することを目的としています。<br>
+
+#cardList.container
+  .row
+    / URLひとつごとにカードをひとつ出力
+    - @results.each do |url|
+        .col-md-4
+          .jumbotron
+            .jumbotron-photo
+              img src="https://s.wordpress.com/mshots/v1/#{URI.encode(url[:url])}?w=300" /
+            .jumbotron-contents
+              .cardTitle1
+                = url[:name]
+              .cardTitle2 
+                a href="#{url[:url]}"
+                 = url[:url]
+              h2 頻出単語
+              table.table
+                thead
+                  tr
+                    th Word
+                    th Count
+                tbody
+                  - url[:wordRank5].each do |word|
+                    tr
+                      td 
+                        = word.word
+                      td 
+                        = word.count
+
+                
+    

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  root 'top#index'
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   get 'contents_detail/index'
 
   get 'contents_list/index'
@@ -9,7 +14,6 @@ Rails.application.routes.draw do
 
   get 'top/index'
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :admin_users
   
   

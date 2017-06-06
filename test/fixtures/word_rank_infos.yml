@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: MyText
+  count: 1
+  url_mst_id: 1
+
+two:
+  word: MyText
+  count: 1
+  url_mst_id: 1

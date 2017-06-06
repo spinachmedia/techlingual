@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606033812) do
+ActiveRecord::Schema.define(version: 20170606050001) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",               default: "", null: false
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(version: 20170606033812) do
     t.integer  "url_mst_id"
     t.text     "word"
     t.integer  "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "word_rank_infos", force: :cascade do |t|
+    t.text     "word"
+    t.integer  "count"
+    t.integer  "url_mst_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

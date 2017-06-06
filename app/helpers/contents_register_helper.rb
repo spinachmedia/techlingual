@@ -1,0 +1,2 @@
+module ContentsRegisterHelper
+end

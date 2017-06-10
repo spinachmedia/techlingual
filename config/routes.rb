@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get 'leaning_word/:id' ,to: 'leaning_word#index'
   get 'leaning_word/getImages/:searchWord' ,to: 'leaning_word#getImages'
+  get 'leaning_word/getWord/:id/:number' ,to: 'leaning_word#getWord'
   get 'leaning_sentence/:id' ,to: 'leaning_sentence#index'
 
 

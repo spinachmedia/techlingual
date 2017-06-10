@@ -8,6 +8,8 @@ script src="https://code.createjs.com/preloadjs-0.6.2.min.js"
 script src="/assets/leaning_word.js"
 
 .container
+  .hidden#id 
+    = @result[:id]
   canvas id="canvas" width="600" height="480"
   .siteDescription
     .row

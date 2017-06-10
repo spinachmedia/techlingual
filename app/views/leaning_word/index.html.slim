@@ -1,0 +1,23 @@
+link rel="stylesheet" media="all" href="/assets/leaning_word.css"
+
+script src="https://code.createjs.com/createjs-2015.11.26.min.js"
+script src="https://code.createjs.com/easeljs-0.8.2.min.js"
+script src="https://code.createjs.com/tweenjs-0.6.2.min.js"
+script src="https://code.createjs.com/soundjs-0.6.2.min.js"
+script src="https://code.createjs.com/preloadjs-0.6.2.min.js"
+script src="/assets/leaning_word.js"
+
+.container
+  canvas id="canvas" width="600" height="480"
+  .siteDescription
+    .row
+      .col-md-4
+        .jumbotron-photo
+          img src="https://s.wordpress.com/mshots/v1/#{URI.encode(@result[:url])}?w=300"
+      .col-md-8
+        .jumbotron-contents
+          .cardTitle1
+            = @result[:name]
+          .cardTitle2 
+            a href="#{@result[:url]}"
+             = @result[:url]

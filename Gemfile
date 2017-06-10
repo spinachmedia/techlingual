@@ -66,6 +66,8 @@ gem 'less-rails'
 
 gem 'bootflat-rails'
 
+gem 'httpclient'
+gem 'dotenv-rails'
 
 # rails g bootswatch:install lumen
 # rails g bootswatch:import lumen

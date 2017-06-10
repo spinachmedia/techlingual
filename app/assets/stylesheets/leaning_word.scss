@@ -1,3 +1,22 @@
 // Place all the styles related to the LeaningWord controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container {
+  width : 100%;
+  padding: 40px 0px;
+}
+
+#canvas {
+  display: block;
+  margin: auto;  
+  background-color: #FAFAFA;
+}
+
+.siteDescription {
+  width: 80%;
+  min-width: 600px;
+  margin: auto;
+  margin-top: 40px;
+}
+

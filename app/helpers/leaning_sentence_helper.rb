@@ -1,0 +1,2 @@
+module LeaningSentenceHelper
+end

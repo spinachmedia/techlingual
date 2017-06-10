@@ -4,13 +4,16 @@ class CrawlWord
     @@count = 0
 
     # 1サイトごとに、以下の件数までしかカウントしない
-    @@maxCount = 20;
+    @@maxCount = 500;
 
     #一度クロールしたURLを格納
     @@croled_url = []
     
     # メイン処理
     def self.execute
+        
+        # データの全削除
+        WordInfo.delete_all
         
         #モデルからクロール対象を取り出す
         urls = UrlMst.all

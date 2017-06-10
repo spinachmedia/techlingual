@@ -2,6 +2,8 @@ class MergeCount
     
     def self.execute
         
+        WordRankInfo.delete_all
+        
         # 集計結果をマージする
         # WordMst => WordRankInfo
         # WordMstは、URLごとのランキング

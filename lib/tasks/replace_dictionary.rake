@@ -20,12 +20,12 @@ namespace :replace_dictionary do
         File.open('./lib/ejdic-hand-utf8.txt') do |file|
           file.each_line do |record|
             #puts labmen
-            replaced = record.gsub(/^(\w)\s+/,'\1<,,,>')
+            replaced = record.gsub(/^(\w+)\s+/,'\1<,,,>')
             data = replaced.split("<,,,>")
             DictionaryMst.new(:word => data[0],:mean =>data[1]).save
             
              count = count + 1
-            if count % 500 == 0
+            if count % 1000 == 0
               puts count
             end
             

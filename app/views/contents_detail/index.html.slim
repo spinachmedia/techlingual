@@ -32,6 +32,10 @@ link rel="stylesheet" media="all" href="/assets/contents_detail.css"
                       td 
                         = "#{500}人"
                     tr
+                      th 単語取得日時
+                      td 
+                        = (Time.new + 9 * 60 * 60).strftime('%Y年%m月%d日 %H:%M:%S')
+                    tr
                       td.startStudyButtonArea colspan="2"
                         button.btn.btn-primary.btn-block#startStudyButton type="button"  学習を開始する
               
@@ -42,10 +46,6 @@ link rel="stylesheet" media="all" href="/assets/contents_detail.css"
         ul#myTab1.nav.nav-tabs.nav-justified
           li.active
             a data-toggle="tab" href="#home1"  単語一覧
-          li
-            a data-toggle="tab" href="#profile1"  Profile
-          li.dropdown
-            a data-toggle="tab" href="#profile1"  Profile
         #myTabContent.tab-content
           #home1.tab-pane.fade.active.in
             table.table
@@ -62,7 +62,10 @@ link rel="stylesheet" media="all" href="/assets/contents_detail.css"
                     td
                       = word.count
                     td
-                      | mean
+                      - if word.mean
+                        = word.mean.gsub(';','<br>').gsub('/','/<br>').html_safe
+                      - else
+                        = "-"
                     
               
             

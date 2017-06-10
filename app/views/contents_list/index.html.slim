@@ -1,2 +1,38 @@
-<h1>ContentsList#index</h1>
-<p>Find me in app/views/contents_list/index.html.erb</p>
+link rel="stylesheet" media="all" href="/assets/contents_list.css"
+
+.mainContents#cardList.container
+  h3 解析済みページ一覧
+  p 
+    | 技術系のドキュメントの単語、文を解析しています。<br>
+    | 
+  
+  .row
+    / URLひとつごとにカードをひとつ出力
+    - @results.each do |url|
+        .col-md-4
+          .jumbotron.siteCard
+            .jumbotron-photo
+              img src="https://s.wordpress.com/mshots/v1/#{URI.encode(url[:url])}?w=300"
+            .jumbotron-contents
+              .cardTitle1
+                = url[:name]
+              .cardTitle2 
+                a href="#{url[:url]}"
+                 = url[:url]
+              .buttons
+                a.practice.btn.btn-primary.btn-block href="/leaning_word/#{url[:id]}" 単語を学習する
+                a.practice.btn.btn-primary.btn-block href="/leaning_sentence/#{url[:id]}" 文で練習する
+                a.practice.btn.btn-normal.btn-block href="/contents_detail/#{url[:id]}" 詳細を見る
+              h2 頻出単語
+              table.table
+                thead
+                  tr
+                    th Word
+                    th Count
+                tbody
+                  - url[:wordRank5].each do |word|
+                    tr
+                      td 
+                        = word.word
+                      td 
+                        = word.count

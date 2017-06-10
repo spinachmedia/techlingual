@@ -1,0 +1,2 @@
+module LeaningWordHelper
+end

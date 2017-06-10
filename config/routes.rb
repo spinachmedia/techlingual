@@ -3,18 +3,23 @@ Rails.application.routes.draw do
   root 'top#index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :admin_users
+  
+  get 'contents_list' , to: "contents_list#index"
+  get 'contents_list/index'
   
   get 'contents_detail/:id' ,to: 'contents_detail#index'
 
-  get 'contents_list/index'
+  get 'leaning_word/:id' ,to: 'leaning_word#index'
+  get 'leaning_sentence/:id' ,to: 'leaning_sentence#index'
+
 
   get 'contents_register/index'
-
   get 'contents_register/add'
 
   get 'top/index'
 
-  devise_for :admin_users
+  
   
   
   
